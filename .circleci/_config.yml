@@ -1,0 +1,22 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+
+    docker:
+      - image: circleci/node:carbon
+
+    working_directory: ~/repo
+
+    steps:
+        - checkout
+
+        - run:
+            name: "Deploy image to npm"
+            command: yarn publish
