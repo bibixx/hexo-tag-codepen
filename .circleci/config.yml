@@ -18,5 +18,9 @@ jobs:
         - checkout
 
         - run:
+            name: "Run tests"
+            command: yarn test
+
+        - run:
             name: "Deploy image to npm"
-            command: yarn publish
+            command: yarn ci-publish
