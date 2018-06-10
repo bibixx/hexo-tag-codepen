@@ -1,5 +1,4 @@
-hexo-codepen [![NPM version][npm-downloads]][npm-url]
-================
+# hexo-codepen [![NPM version][npm-downloads]][npm-url] ![CircleCI branch][circle-ci-build]
 
 An even better version of [hexo-codepen][hexo-codepen-link].
 
@@ -64,3 +63,4 @@ MIT
 [Hexo]: http://hexo.io/
 [CodePen]: http://codepen.io/
 [Embedded Pen]: http://blog.codepen.io/documentation/features/embedded-pens/
+[circle-ci-build]: https://img.shields.io/circleci/project/github/bibixx/hexo-tag-codepen/master.svg
