@@ -6,9 +6,26 @@ jobs:
 
     steps:
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+
+      - run:
+          name: "Yarn install"
+          command: yarn
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: "Log in to npm"
+          command: yarn npm-login
       - run:
           name: "Deploy image to npm"
-          command: yarn ci-publish
+          command: npm publish
 
   test:
     docker:
