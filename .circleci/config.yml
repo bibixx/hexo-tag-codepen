@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:carbon
+
+    steps:
+      - checkout
+      - run:
+          name: "Deploy image to npm"
+          command: yarn ci-publish
+
+  test:
+    docker:
+      - image: circleci/node:carbon
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: yarn test
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master
