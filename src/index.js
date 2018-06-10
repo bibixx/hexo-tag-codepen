@@ -2,8 +2,8 @@
 
 function codepenTagRender(args) {
   const [
-    hash,
-    tabs = hexo.config.codepen.default_tabs || "result,js",
+    slugHash,
+    defaultTab = hexo.config.codepen.default_tabs || "result,js",
     height = hexo.config.codepen.height || 300,
     width = hexo.config.codepen.width || "100%",
     user,
@@ -12,7 +12,7 @@ function codepenTagRender(args) {
 
   const userId = user ? user === 'anonymous' ? 'anon' : user : hexo.config.codepen.userId || "anon";
 
-  if ( !hash ) {
+  if ( !slugHash ) {
     return new Error("Pen hash should be provided");
   }
 
