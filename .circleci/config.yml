@@ -27,24 +27,24 @@ jobs:
           name: "Deploy image to npm"
           command: npm publish
 
-  test:
+  test-version:
     docker:
       - image: circleci/node:carbon
     steps:
       - checkout
       - run:
-          name: Run tests
-          command: yarn test
+          name: Run version test
+          command: yarn test:version
 
 workflows:
   version: 2
 
   build:
     jobs:
-      - test
+      - test-version
       - build:
           requires:
-            - test
+            - test-version
           filters:
             branches:
               only:
