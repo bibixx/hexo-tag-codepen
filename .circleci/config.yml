@@ -10,19 +10,16 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-
       - run:
           name: "Yarn install"
           command: yarn
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
       - run:
-          name: "Log in to npm"
-          command: yarn npm-login
+          name: "Set up npm auth token"
+          command: echo //registry.npmjs.org/:_authToken=$NPM_TOKEN > ~/.npmrc
       - run:
           name: "Deploy image to npm"
           command: npm publish
