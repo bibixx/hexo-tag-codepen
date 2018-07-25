@@ -1,6 +1,6 @@
 {
   "name": "hexo-codepen-v2",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Hexo tag to embed code snippet from codepen.io",
   "main": "src/index.js",
   "scripts": {
